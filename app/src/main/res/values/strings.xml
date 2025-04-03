@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UsefulLanguageMaster</string>
+    <string name="app_name_with_spaces">Useful language master</string>
 </resources>
