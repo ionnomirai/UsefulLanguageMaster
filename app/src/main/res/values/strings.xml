@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">UsefulLanguageMaster</string>
     <string name="app_name_with_spaces">Useful language master</string>
+
+    <string name="vocabulary_name">Vocabulary name:</string>
+    <string name="language_studied">Language studied:</string>
+
+    <string name="training">Training</string>
+    <string name="add_new_data">Add new data</string>
+    <string name="view_all_data">View all data</string>
+    <string name="statistics">Statistics</string>
+
 </resources>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <ImageView
+        android:id="@+id/ivBackgroundMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_main_1x" />
+
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_bold_700"
+        android:includeFontPadding="false"
+        android:text="@string/app_name_with_spaces"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivBackgroundMain"
+        app:layout_constraintVertical_bias="0.1112372304199773" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+
+        app:layout_constraintBottom_toBottomOf="@id/cvVocabulary"
+        app:layout_constraintEnd_toEndOf="@id/cvVocabulary"
+        app:layout_constraintHeight_percent="0.164"
+        app:layout_constraintHorizontal_bias="0.07"
+
+        app:layout_constraintStart_toStartOf="@id/cvVocabulary"
+        app:layout_constraintTop_toTopOf="@id/cvVocabulary"
+
+        app:layout_constraintVertical_bias="0.007"
+        app:layout_constraintWidth_percent="0.821"
+
+
+        app:srcCompat="@drawable/rectangle_4x" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvVocabulary"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+
+        app:cardBackgroundColor="#00000000"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.1573770491803279"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvAppName"
+        app:layout_constraintVertical_bias="0.1393188854489164"
+        app:layout_constraintWidth_percent="0.8058252427184466">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <TextView
+                android:id="@+id/tvCurVocabulary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium_500"
+                android:includeFontPadding="false"
+
+                android:text="@string/vocabulary_name"
+                android:textColor="@color/app_name_color"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                app:layout_constraintWidth_percent="0.572289156626506"
+                app:layout_constraintHeight_percent="0.1666666666666667"
+                app:layout_constraintHorizontal_bias="0.2816901408450704"
+                app:layout_constraintVertical_bias="0.3083333333333333" />
+
+            <TextView
+                android:id="@+id/tvCurLanguage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium_500"
+                android:includeFontPadding="false"
+                android:text="@string/language_studied"
+                android:textColor="@color/app_name_color"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tvCurVocabulary"
+                app:layout_constraintStart_toStartOf="@+id/tvCurVocabulary"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurVocabulary"
+                app:layout_constraintVertical_bias="0.3728813559322034"
+                app:layout_constraintWidth_percent="0.572289156626506"
+                app:layout_constraintHeight_percent="0.1666666666666667"/>
+
+            <TextView
+                android:id="@+id/tvVocName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium_500"
+                android:textColor="@color/app_name_color"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:includeFontPadding="false"
+                android:background="#50FF0000"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCurVocabulary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvCurVocabulary"
+                app:layout_constraintTop_toTopOf="@+id/tvCurVocabulary"
+
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintWidth_percent="0.2349397590361446"
+                app:layout_constraintHeight_percent="0.1666666666666667"
+
+
+                tools:text="Nor1" />
+
+            <ImageView
+                android:id="@+id/ivLangStudFlag"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCurLanguage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvCurLanguage"
+                app:layout_constraintTop_toTopOf="@+id/tvCurLanguage"
+                app:srcCompat="@drawable/flag_british_medium"
+
+                app:layout_constraintHorizontal_bias="0.3444772205834153"
+                app:layout_constraintWidth_percent="0.123433734939759"
+                app:layout_constraintHeight_percent="0.1991666666666667"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/Button_wide"
+        android:text="@string/training"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvVocabulary" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
