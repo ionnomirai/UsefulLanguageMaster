@@ -9,22 +9,23 @@ import com.example.usefullanguagemaster.databinding.ActivityMainBinding
 import com.example.usefullanguagemaster.databinding.FrMainBinding
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: FrMainBinding//ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+    //private lateinit var binding: FrMainBinding//ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // connect Binding
-        binding = FrMainBinding.inflate(layoutInflater)//ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        //binding = FrMainBinding.inflate(layoutInflater
         setContentView(binding.root)
 
-/*        enableEdgeToEdge()
+        enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }*/
+        }
     }
 }
