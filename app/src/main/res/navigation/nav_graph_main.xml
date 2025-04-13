@@ -14,11 +14,25 @@
         <action
             android:id="@+id/action_frPreview_to_frMain"
             app:destination="@id/frMain"
-            app:launchSingleTop="true" />
+            app:popUpTo="@id/frPreview"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/frMain"
         android:name="com.example.usefullanguagemaster.fragments.FrMain"
         android:label="FrMain"
-        tools:layout="@layout/fr_main"/>
+        tools:layout="@layout/fr_main">
+        <action
+            android:id="@+id/action_frMain_to_frVocabularies"
+            app:destination="@id/frVocabularies" />
+    </fragment>
+    <fragment
+        android:id="@+id/frVocabularies"
+        android:name="com.example.usefullanguagemaster.fragments.FrVocabularies"
+        android:label="FrVocabularies"
+        tools:layout="@layout/fr_vocabularies">
+        <action
+            android:id="@+id/action_frVocabularies_to_frMain"
+            app:destination="@id/frMain" />
+    </fragment>
 </navigation>

@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.usefullanguagemaster.R
 import com.example.usefullanguagemaster.databinding.FrMainBinding
 
 class FrMain : Fragment() {
@@ -23,6 +26,15 @@ class FrMain : Fragment() {
     ): View? {
         _binding = FrMainBinding.inflate(layoutInflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            cvVocabulary.setOnClickListener {
+                findNavController().navigate(R.id.action_frMain_to_frVocabularies)
+            }
+        }
     }
 
     override fun onDestroyView() {
