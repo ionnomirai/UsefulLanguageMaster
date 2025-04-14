@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.usefullanguagemaster.R
 import com.example.usefullanguagemaster.databinding.FrVocabulariesBinding
 
 class FrVocabularies : Fragment() {
@@ -23,6 +25,15 @@ class FrVocabularies : Fragment() {
     ): View? {
         _binding = FrVocabulariesBinding.inflate(layoutInflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            button.setOnClickListener{
+                findNavController().navigate(R.id.action_frVocabularies_to_frVocabulariesAdd)
+            }
+        }
     }
 
     override fun onDestroyView() {

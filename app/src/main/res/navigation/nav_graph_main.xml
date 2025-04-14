@@ -32,7 +32,12 @@
         android:label="FrVocabularies"
         tools:layout="@layout/fr_vocabularies">
         <action
-            android:id="@+id/action_frVocabularies_to_frMain"
-            app:destination="@id/frMain" />
+            android:id="@+id/action_frVocabularies_to_frVocabulariesAdd"
+            app:destination="@id/frVocabulariesAdd" />
     </fragment>
+    <fragment
+        android:id="@+id/frVocabulariesAdd"
+        android:name="com.example.usefullanguagemaster.fragments.FrVocabulariesAdd"
+        android:label="FrVocabulariesAdd"
+        tools:layout="@layout/fr_vocabularies_add"/>
 </navigation>
