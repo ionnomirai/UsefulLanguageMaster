@@ -10,14 +10,11 @@ import com.example.usefullanguagemaster.databinding.FrMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    //private lateinit var binding: FrMainBinding//ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // connect Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
-        //binding = FrMainBinding.inflate(layoutInflater
         setContentView(binding.root)
 
         enableEdgeToEdge()
