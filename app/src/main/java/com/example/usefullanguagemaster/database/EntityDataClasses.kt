@@ -36,6 +36,15 @@ data class LanguagesTranslation(
 )
 
 //----------------------------------------------------------------------------
+
+/* These are sets of expression. The user can create a set and add new words,
+phrases etc. to it. All items that the user adds to it will be available only
+within that set and in the general pool (but not in other sets). For example,
+if the user adds the word 'dog' to the expression set 'Animals', then he can
+work with this word in the expression set "Animals". However, the word will be
+invisible to other sets (until the user adds it to a new set). At the same time,
+the word 'dog' is in the general pool. So, when the user creates a new set of
+expressions, he can add words from this pool. */
 @Entity(
     tableName = "expression_sets",
     indices = [

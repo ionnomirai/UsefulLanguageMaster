@@ -38,24 +38,7 @@ class FrVocabularies : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // for test
-        vmGeneralF.viewModelScope.launch {
-            vmGeneralF.getAllLanguagesLearning()
-        }
-
         binding.apply {
-            button.setOnClickListener{
-                findNavController().navigate(R.id.action_frVocabularies_to_frVocabulariesAdd)
-            }
-
-            // for test
-            viewLifecycleOwner.lifecycleScope.launch {
-                vmGeneralF.allLanguagesLearning.collect{
-                    if (it.isNotEmpty()){
-                        tvTest1.text = it.first().language
-                    }
-                }
-            }
 
         }
     }

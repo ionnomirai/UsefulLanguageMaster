@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    >
 
     <ImageView
         android:id="@+id/ivBackgroundMain"
@@ -16,27 +17,39 @@
         app:srcCompat="@drawable/background_main_1x" />
 
     <TextView
-        android:id="@+id/tvTest1"
+        android:id="@+id/tvVocabularyTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/vocabularies"
         android:textSize="24sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:textColor="@color/app_name_color"
+        android:fontFamily="@font/inter_bold_700"
+        android:includeFontPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0392156862745098"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvVocubalaries"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tvVocabularyTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bAddNewVocabulary"
+        />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="352dp"
-        android:text="Add new vocabulary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
+        android:id="@+id/bAddNewVocabulary"
+        style="@style/Button_wide"
+        android:text="@string/add_new_vocabulary"
+        app:layout_constraintTop_toBottomOf="@id/tvVocabularyTop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.943342776203966"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

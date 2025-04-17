@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/ivBackgroundMain"
-        app:layout_constraintVertical_bias="0.1112372304199773" />
+        app:layout_constraintVertical_bias="0.0776818742293465" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -80,12 +80,9 @@
                 android:id="@+id/tvCurVocabulary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium_500"
-                android:includeFontPadding="false"
-
+                style="@style/Text_card_vocabulary"
                 android:text="@string/vocabulary_name"
-                android:textColor="@color/app_name_color"
-                android:textSize="20sp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -100,11 +97,8 @@
                 android:id="@+id/tvCurLanguage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium_500"
-                android:includeFontPadding="false"
                 android:text="@string/language_studied"
-                android:textColor="@color/app_name_color"
-                android:textSize="20sp"
+                style="@style/Text_card_vocabulary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/tvCurVocabulary"
                 app:layout_constraintStart_toStartOf="@+id/tvCurVocabulary"
@@ -117,11 +111,8 @@
                 android:id="@+id/tvVocName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium_500"
-                android:textColor="@color/app_name_color"
-                android:textSize="20sp"
+                style="@style/Text_card_vocabulary"
                 android:textAlignment="center"
-                android:includeFontPadding="false"
                 android:background="#50FF0000"
                 app:layout_constraintBottom_toBottomOf="@+id/tvCurVocabulary"
                 app:layout_constraintEnd_toEndOf="parent"

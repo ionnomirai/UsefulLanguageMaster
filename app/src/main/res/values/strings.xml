@@ -3,11 +3,17 @@
     <string name="app_name_with_spaces">Useful language master</string>
 
     <string name="vocabulary_name">Vocabulary name:</string>
+    <string name="vocabulary">Vocabulary:</string>
+    <string name="vocabularies">Vocabularies</string>
     <string name="language_studied">Language studied:</string>
+    <string name="translation_language">Translation language:</string>
+    <string name="add_new_vocabulary">Add new vocabulary</string>
 
     <string name="training">Training</string>
     <string name="add_new_data">Add new data</string>
     <string name="view_all_data">View all data</string>
     <string name="statistics">Statistics</string>
+
+    <string name="engligh">English</string>
 
 </resources>

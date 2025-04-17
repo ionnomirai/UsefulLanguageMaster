@@ -19,4 +19,10 @@
         <item name="layout_constraintHeight_percent">0.0459016393442623</item>
     </style>
 
+    <style name="Text_card_vocabulary" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/app_name_color</item>
+        <item name="android:fontFamily">@font/inter_medium_500</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
 </resources>
