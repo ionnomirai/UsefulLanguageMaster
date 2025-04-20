@@ -42,5 +42,9 @@ class UlmDbRepository private constructor(context: Context) {
         }
     }
 
+
     fun getAllLanguagesLearning(): Flow<List<LanguagesLearning>> = database.ulmDao().getAllLanguagesLearning()
+
+    // ExpressionSets (expression_sets), but with full string information without foreign keys.
+    fun getAllExpSetsText(): Flow<List<ExpressionSetsTextData>> = database.ulmDao().getAllExpSetsText()
 }

@@ -6,4 +6,6 @@
     <color name="app_name_color">#0B0803</color>
     <color name="white_cream">#F9F9F9</color>
     <color name="brown_bright">#72562C</color>
+
+    <color name="yellow_card_vocabulary">#FFF7DB</color>
 </resources>
