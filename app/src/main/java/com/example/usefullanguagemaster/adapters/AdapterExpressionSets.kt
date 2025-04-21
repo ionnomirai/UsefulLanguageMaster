@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.usefullanguagemaster.database.ExpressionSets
+import com.example.usefullanguagemaster.database.ExpressionSetsTextData
 import com.example.usefullanguagemaster.databinding.CvVocabularyBinding
 
 class AdapterExpressionSets
     :
-    ListAdapter<ExpressionSets, AdapterExpressionSets.ExpSetsViewHolder>(ExpressionSetsDiffCallback()) {
+    ListAdapter<ExpressionSetsTextData, AdapterExpressionSets.ExpSetsViewHolder>(ExpressionSetsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpSetsViewHolder {
         val bindingOuter = CvVocabularyBinding.inflate(
@@ -27,10 +28,10 @@ class AdapterExpressionSets
     class ExpSetsViewHolder(val bindingInner: CvVocabularyBinding) :
         RecyclerView.ViewHolder(bindingInner.root) {
 
-        fun setData(es: ExpressionSets) {
+        fun setData(es: ExpressionSetsTextData) {
             bindingInner.apply {
-                tvLanguageTCurrent.text = ""
-                tvVocabularyCurrent.text = ""
+                tvVocabularyCurrent.text = es.name
+                tvLanguageTCurrent.text = es.languageTranslation
             }
         }
     }

@@ -14,7 +14,7 @@ import androidx.room.PrimaryKey
 data class LanguagesLearning(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Id")
-    val id: Int,
+    val id: Int = 0,
 
     @ColumnInfo(name = "Language") val language: String
 )
@@ -30,7 +30,7 @@ data class LanguagesLearning(
 data class LanguagesTranslation(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Id")
-    val id: Int,
+    val id: Int = 0,
 
     @ColumnInfo(name = "Language") val language: String
 )
@@ -68,7 +68,7 @@ expressions, he can add words from this pool. */
 data class ExpressionSets(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Id")
-    val id: Int,
+    val id: Int = 0,
 
     @ColumnInfo(name = "Name") val name: String,
     @ColumnInfo(name = "Learning_language") val learningLanguage: Int,

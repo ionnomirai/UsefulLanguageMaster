@@ -1,12 +1,15 @@
 package com.example.usefullanguagemaster.viewModels
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.usefullanguagemaster.database.ExpressionSetsTextData
 import com.example.usefullanguagemaster.database.LanguagesLearning
 import com.example.usefullanguagemaster.database.UlmDbRepository
+import com.example.usefullanguagemaster.enums.LanguagesLearningEnum
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 class ViewModelGeneral : ViewModel() {
     private val vmGeneralTag = "ViewModelGeneralTag"
@@ -25,7 +28,7 @@ class ViewModelGeneral : ViewModel() {
             _allLanguagesLearning.value = it
         }
     }
-    //-------------
+    //--------------------------------------------------------------------------------------------------------
 
     // Get ExpressionSets (expression_sets), but with full string information without foreign keys.
     private var _allExpressionSets: MutableStateFlow<List<ExpressionSetsTextData>> = MutableStateFlow(
@@ -37,6 +40,23 @@ class ViewModelGeneral : ViewModel() {
     suspend fun getAllExpresionSets(){
         repository.getAllExpSetsText().collect{
             _allExpressionSets.value = it
+        }
+    }
+
+    //--------------------------------------------------------------------------------------------------------
+
+
+
+
+    //--------------------------------------------------------------------------------------------------------
+
+    fun insertExpressionSet(
+        name: String,
+        languagesLearningEnum: LanguagesLearningEnum = LanguagesLearningEnum.ENGLISH,
+        languageTranslation: String
+        ){
+        viewModelScope.launch {
+            repository.insertExpressionSet(name, languagesLearningEnum, languageTranslation)
         }
     }
 }
