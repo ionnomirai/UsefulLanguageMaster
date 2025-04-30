@@ -1,10 +1,13 @@
 package com.example.usefullanguagemaster.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,10 +16,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.usefullanguagemaster.R
 import com.example.usefullanguagemaster.adapters.AdapterExpressionSets
-import com.example.usefullanguagemaster.database.LanguagesLearning
+import com.example.usefullanguagemaster.database.ExpressionSetsTextData
 import com.example.usefullanguagemaster.databinding.FrVocabulariesBinding
 import com.example.usefullanguagemaster.viewModels.ViewModelGeneral
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class FrVocabularies : Fragment() {
@@ -29,6 +31,9 @@ class FrVocabularies : Fragment() {
         }
     // view model with general information
     private val vmGeneralF: ViewModelGeneral by activityViewModels()
+
+    private var sharedPreferences: SharedPreferences? = null
+
     private val tag = "FrVocabulariesTag"
 
     override fun onCreateView(
@@ -43,21 +48,28 @@ class FrVocabularies : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            vmGeneralF.getAllExpresionSets()
-        }
+        sharedPreferences = activity?.getSharedPreferences(
+            getString(R.string.sp_settings_key), Context.MODE_PRIVATE
+        )
 
         binding.apply {
             bAddNewVocabulary.setOnClickListener{
                 findNavController().navigate(R.id.action_frVocabularies_to_frVocabulariesAdd)
             }
 
-            val adapter = AdapterExpressionSets()
+            val adapter = AdapterExpressionSets(getActiveRB())
             rvVocubalaries.apply {
                 this.adapter = adapter
                 this.layoutManager = LinearLayoutManager(requireContext())
             }
 
+            // we monitor the database and receive data from there.
+            viewLifecycleOwner.lifecycleScope.launch {
+                vmGeneralF.getAllExpresionSets()
+            }
+
+            /* We monitor the data (dictionaries or vocabularies) received from the database.
+            * If added, update adapter.*/
             viewLifecycleOwner.lifecycleScope.launch {
                 vmGeneralF.allExpressionSets.collect{
                     adapter.submitList(it)
@@ -65,23 +77,29 @@ class FrVocabularies : Fragment() {
             }
         }
 
-        // test part
-        viewLifecycleOwner.lifecycleScope.launch {
-            vmGeneralF.getAllLanguagesLearning()
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            vmGeneralF.allLanguagesLearning.collect{
-                it.forEach { item: LanguagesLearning  ->
-                    Log.d(tag, "id: ${item.id} -- name: ${item.language}")
-                }
-
-            }
-        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    interface ActiveRB{
+        fun getId(): Int
+        fun setId(id:Int)
+    }
+
+    /* Interface for saving the id of the active vocabulary. */
+    private fun getActiveRB(): ActiveRB =  object : ActiveRB{
+        override fun getId(): Int {return vmGeneralF.activeExpressionSetId}
+
+        override fun setId(id: Int) {
+            vmGeneralF.viewModelScope.launch {
+                sharedPreferences?.edit(commit = true) {
+                    putInt(getString(R.string.sp_vocabulary_id), id)
+                }
+                vmGeneralF.activeExpressionSetId = id
+            }
+        }
     }
 }

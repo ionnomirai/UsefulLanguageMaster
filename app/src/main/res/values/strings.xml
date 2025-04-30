@@ -2,6 +2,9 @@
     <string name="app_name">UsefulLanguageMaster</string>
     <string name="app_name_with_spaces">Useful language master</string>
 
+    <string name="sp_settings_key">UsefulLanguageMaster_key</string>
+    <string name="sp_vocabulary_id">Vocabulary_id</string>
+
     <string name="vocabulary_name">Vocabulary name:</string>
     <string name="vocabulary">Vocabulary:</string>
     <string name="vocabularies">Vocabularies</string>

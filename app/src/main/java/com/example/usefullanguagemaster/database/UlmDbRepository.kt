@@ -50,6 +50,8 @@ class UlmDbRepository private constructor(context: Context) {
     // ExpressionSets (expression_sets), but with full string information without foreign keys.
     fun getAllExpSetsText(): Flow<List<ExpressionSetsTextData>> = database.ulmDao().getAllExpSetsText()
 
+    suspend fun getAllExpSetsTextOnce(): List<ExpressionSetsTextData> =database.ulmDao().getAllExpSetsTextOnce()
+
     // Get Id from language_translation table. If there is no such record, return null.
     private suspend fun getLanguageTranslation(languageName: String): Int? = database.ulmDao().getLanguageTranslation(languageName)
 
@@ -76,14 +78,13 @@ class UlmDbRepository private constructor(context: Context) {
                     languageTranslationId = getLanguageTranslation(languageTranslation)
                         ?: throw IllegalStateException("Failed to get languageId.")
                 }
-
-                // insert ExpressionSet
-                insertExpressionSetDev(ExpressionSets(
-                    name = name,
-                    learningLanguage = languageLearning.id,
-                    translationLanguage = languageTranslationId
-                ))
             }
+            // insert ExpressionSet
+            insertExpressionSetDev(ExpressionSets(
+                name = name,
+                learningLanguage = languageLearning.id,
+                translationLanguage = languageTranslationId
+            ))
         }
     }
 }

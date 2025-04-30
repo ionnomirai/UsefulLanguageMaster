@@ -104,6 +104,7 @@
             android:minHeight="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/tvLanguageSTitle"
             app:layout_constraintEnd_toEndOf="parent"
+            android:checked="false"
             app:layout_constraintStart_toEndOf="@+id/tvVocabularyCurrent"
             app:layout_constraintTop_toTopOf="@+id/tvLanguageSTitle" />
 
