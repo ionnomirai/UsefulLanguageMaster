@@ -17,7 +17,7 @@ interface UlmDao {
             "INNER JOIN expression_sets AS es ON es.Learning_language = ll.id " +
             "INNER JOIN languages_translation AS lt ON lt.id = es.Translation_language")
     fun getAllExpSetsText(): Flow<List<ExpressionSetsTextData>>
-    
+
     @Query("SELECT es.Id AS 'id', es.Name AS 'name', ll.Language AS 'languageLearning', lt.Language AS 'languageTranslation' " +
             "FROM languages_learning AS ll " +
             "INNER JOIN expression_sets AS es ON es.Learning_language = ll.id " +

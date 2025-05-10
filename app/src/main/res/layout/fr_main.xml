@@ -27,28 +27,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivBackgroundMain"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0776818742293465" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-
-        app:layout_constraintBottom_toBottomOf="@id/cvVocabulary"
-        app:layout_constraintEnd_toEndOf="@id/cvVocabulary"
-        app:layout_constraintHeight_percent="0.164"
-        app:layout_constraintHorizontal_bias="0.07"
-
-        app:layout_constraintStart_toStartOf="@id/cvVocabulary"
-        app:layout_constraintTop_toTopOf="@id/cvVocabulary"
-
-        app:layout_constraintVertical_bias="0.007"
-        app:layout_constraintWidth_percent="0.821"
-
-
-        app:srcCompat="@drawable/rectangle_4x" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvVocabulary"
@@ -57,23 +37,22 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
-
-        app:cardBackgroundColor="#00000000"
+        android:backgroundTint="@color/yellow_card_vocabulary"
         app:cardCornerRadius="20dp"
-        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvAppName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.1573770491803279"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvAppName"
-        app:layout_constraintVertical_bias="0.1393188854489164"
-        app:layout_constraintWidth_percent="0.8058252427184466">
+
+        app:layout_constraintHeight_percent="0.1573770491803279"
+        app:layout_constraintWidth_percent="0.8058252427184466"
+
+        app:layout_constraintVertical_bias="0.1162790697674419"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             >
 
             <TextView
@@ -144,13 +123,40 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/bTraining"
         style="@style/Button_wide"
         android:text="@string/training"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvVocabulary" />
+        app:layout_constraintTop_toBottomOf="@+id/cvVocabulary"
+
+        app:layout_constraintVertical_bias="0.1428571428571429"/>
+
+    <Button
+        android:id="@+id/bAddNewData"
+        style="@style/Button_wide"
+        android:text="@string/add_new_data"
+
+        app:layout_constraintTop_toBottomOf="@+id/bTraining"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/bTraining"
+        app:layout_constraintEnd_toEndOf="@+id/bTraining"
+
+        app:layout_constraintVertical_bias="0.1058201058201058"/>
+
+    <Button
+        android:id="@+id/bViewAllData"
+        style="@style/Button_wide"
+        android:text="@string/view_all_data"
+
+        app:layout_constraintTop_toBottomOf="@+id/bAddNewData"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/bAddNewData"
+        app:layout_constraintEnd_toEndOf="@+id/bAddNewData"
+
+        app:layout_constraintVertical_bias="0.1351351351351351"
+         />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
