@@ -7,16 +7,25 @@
 
     <style name="Theme.UsefulLanguageMaster" parent="Base.Theme.UsefulLanguageMaster" />
 
-    <style name="Button_wide" parent="Widget.Material3.Button">
+    <style name="Button_wide_default">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">44dp</item>
         <item name="android:backgroundTint">@color/brown_bright</item>
         <item name="android:textColor">@color/white_cream</item>
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">@font/inter_semibold_600</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Button_wide" parent="Button_wide_default">
         <item name="layout_constraintWidth_percent">0.9029126213592233</item>
         <item name="layout_constraintHeight_percent">0.0459016393442623</item>
+    </style>
+
+    <style name="Button_wide_yellow_dark" parent="Button_wide_default">
+        <item name="android:backgroundTint">@color/yellow_dark</item>
+        <item name="android:textColor">@color/app_name_color</item>
     </style>
 
     <style name="Text_card_vocabulary" parent="@style/Widget.AppCompat.TextView">
@@ -25,4 +34,27 @@
         <item name="android:textSize">20sp</item>
         <item name="android:includeFontPadding">false</item>
     </style>
+
+    <style name="Screen_title" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginBottom">32dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/inter_bold_700</item>
+        <item name="android:textColor">@color/app_name_color</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:gravity">center</item>
+    </style>
+    
+    <style name="Field_title" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/inter_medium_500</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/app_name_color</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    
 </resources>

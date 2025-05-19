@@ -90,7 +90,7 @@
             style="@style/Text_card_vocabulary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/engligh"
+            android:text="@string/english"
             app:layout_constraintBottom_toBottomOf="@+id/tvLanguageTTitle"
             app:layout_constraintEnd_toEndOf="@+id/tvVocabularyCurrent"
             app:layout_constraintStart_toStartOf="@+id/tvVocabularyCurrent"

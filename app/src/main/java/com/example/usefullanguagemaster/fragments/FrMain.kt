@@ -56,6 +56,10 @@ class FrMain : Fragment() {
                 findNavController().navigate(R.id.action_frMain_to_frVocabularies)
             }
 
+            bAddNewData.setOnClickListener {
+                findNavController().navigate(R.id.action_frMain_to_frAddNewDataDetailed)
+            }
+
             // set data to the cardView about current active Vocabulary
             setCardCurrentVocabulary()
         }

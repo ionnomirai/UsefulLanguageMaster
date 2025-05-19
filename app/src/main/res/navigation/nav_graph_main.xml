@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_frMain_to_frVocabularies"
             app:destination="@id/frVocabularies" />
+        <action
+            android:id="@+id/action_frMain_to_frAddNewDataDetailed"
+            app:destination="@id/frAddNewDataDetailed" />
     </fragment>
     <fragment
         android:id="@+id/frVocabularies"
@@ -40,4 +43,9 @@
         android:name="com.example.usefullanguagemaster.fragments.FrVocabulariesAdd"
         android:label="FrVocabulariesAdd"
         tools:layout="@layout/fr_vocabularies_add"/>
+    <fragment
+        android:id="@+id/frAddNewDataDetailed"
+        android:name="com.example.usefullanguagemaster.fragments.FrAddNewDataDetailed"
+        android:label="FrAddNewDataDetailed"
+        tools:layout="@layout/fr_add_new_data_detailed"/>
 </navigation>

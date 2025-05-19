@@ -17,6 +17,16 @@
     <string name="view_all_data">View all data</string>
     <string name="statistics">Statistics</string>
 
-    <string name="engligh">English</string>
+    <string name="english">English</string>
+
+    <!--Add new data-->
+    <string name="type">Type:</string>
+    <string name="word">*Word:</string>
+    <string name="part_of_speech">Part of speech:</string>
+    <string name="word_translation">*Word translation:</string>
+    <string name="add_phrase_example">+ Add phrase example</string>
+    <string name="add_new_translation">+ New translation</string>
+    <string name="complete_and_exit">Complete and exit</string>
+    <string name="complete_and_add_new_item">Complete and add new item</string>
 
 </resources>
