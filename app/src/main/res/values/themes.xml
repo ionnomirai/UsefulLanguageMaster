@@ -55,6 +55,24 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <!--dynamic adding-->
+    <style name="Dynamic_add_tv_title" parent="Field_title">
+        <item name="android:layout_marginTop">27dp</item>
+    </style>
+
+    <style name="Dynamic_add_et_v0" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">27dp</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:maxLines">15</item>
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/inter_medium_500</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/app_name_color</item>
+    </style>
     
     
 </resources>

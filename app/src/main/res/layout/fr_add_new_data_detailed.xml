@@ -86,7 +86,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvTranslation"
                 android:layout_width="0dp"
-                android:layout_height="204dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etWord"
@@ -125,7 +125,7 @@
                     <TextView
                         android:id="@+id/tvTitleTranslation"
                         style="@style/Field_title"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="27dp"
                         android:text="@string/word_translation"
                         app:layout_constraintStart_toStartOf="@id/tvTitlePOS"
                         app:layout_constraintTop_toBottomOf="@id/spPOS" />
@@ -143,16 +143,45 @@
                         app:layout_constraintEnd_toEndOf="@id/spPOS"
                         app:layout_constraintStart_toEndOf="@id/tvTitleTranslation" />
 
+                    <LinearLayout
+                        android:id="@+id/llPhrases"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="33dp"
+                        app:layout_constraintTop_toBottomOf="@id/etTranslation"
+                        app:layout_constraintBottom_toTopOf="@id/bAddNewPhraseExample"
+                        app:layout_constraintStart_toStartOf="@id/tvTitleTranslation"
+                        app:layout_constraintEnd_toEndOf="@id/etTranslation"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvPhrase"
+                            style="@style/Dynamic_add_tv_title"
+                            android:text="@string/phrase" />
+
+                        <EditText
+                            android:id="@+id/etPhrase"
+                            style="@style/Dynamic_add_et_v0" />
+
+                        <TextView
+                            android:id="@+id/tvPhraseTranslation"
+                            style="@style/Dynamic_add_tv_title"
+                            android:text="@string/phrase_translation" />
+
+                        <EditText
+                            android:id="@+id/etPhraseTranslation"
+                            style="@style/Dynamic_add_et_v0" />
+
+                    </LinearLayout>
+
                     <Button
-                        android:id="@+id/bAddNewExample"
+                        android:id="@+id/bAddNewPhraseExample"
                         style="@style/Button_wide_yellow_dark"
-                        android:text="@string/add_phrase_example"
                         android:layout_marginBottom="16dp"
-                        android:layout_marginTop="33dp"
+                        android:text="@string/add_phrase_example"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/etTranslation"
-                        app:layout_constraintStart_toStartOf="@+id/tvTitleTranslation"
-                        app:layout_constraintTop_toBottomOf="@+id/etTranslation" />
+                        app:layout_constraintStart_toStartOf="@+id/tvTitleTranslation" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -197,11 +226,12 @@
             <Button
                 android:id="@+id/bCompleteRepeat"
                 style="@style/Button_wide_default"
-                android:layout_marginTop="40dp"
-                app:layout_constraintTop_toBottomOf="@id/bCompleteExit"
-                app:layout_constraintStart_toStartOf="@id/bCompleteExit"
+                android:layout_marginVertical="40dp"
+                android:text="@string/complete_and_add_new_item"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/bCompleteExit"
-                android:text="@string/complete_and_add_new_item" />
+                app:layout_constraintStart_toStartOf="@id/bCompleteExit"
+                app:layout_constraintTop_toBottomOf="@id/bCompleteExit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

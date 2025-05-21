@@ -24,8 +24,10 @@
     <string name="word">*Word:</string>
     <string name="part_of_speech">Part of speech:</string>
     <string name="word_translation">*Word translation:</string>
-    <string name="add_phrase_example">+ Add phrase example</string>
-    <string name="add_new_translation">+ New translation</string>
+    <string name="add_phrase_example">+ Phrase example</string>
+    <string name="phrase">Phrase:</string>
+    <string name="phrase_translation">Phr. translation:</string>
+    <string name="add_new_translation">+ Another translation</string>
     <string name="complete_and_exit">Complete and exit</string>
     <string name="complete_and_add_new_item">Complete and add new item</string>
 
