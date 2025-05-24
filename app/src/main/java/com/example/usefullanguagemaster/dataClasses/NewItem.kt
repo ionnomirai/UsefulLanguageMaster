@@ -7,14 +7,12 @@ data class NewItem(
     val item:                   Pair<String, String>,               // <item, translation>
     var pos:                    String? = null,                     // name
     var phrases:                List<Pair<String, String>>? = null, // <phrase, translation>
-    //var additionalTranslations: List<String>? = null,         // <translation>
-    //var additionalPhrases:      List<String>? = null          // <translation>
 ) {
     override fun toString(): String {
-        return "Type:                     text: ${type}/n" +
-                "Item:                    id=${item.first} -- text: ${item.second}/n" +
-                "Pos:                     text: ${pos ?: "empty"}/n" +
-                "Phrase:                  ${if(phrases != null) phrases.toString() else "empty"}"
+        return "Type:                    name: ${type}\n" +
+                "Item:                    text=${item.first} -- translation: ${item.second}\n" +
+                "Pos:                     name: ${pos ?: "empty"}\n" +
+                "Phrase:                  phrase: ${if(phrases != null) phrases.toString() else "empty"}"
     }
 }
 
