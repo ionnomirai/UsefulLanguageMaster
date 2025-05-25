@@ -80,7 +80,7 @@ data class ExpressionSets(
 data class ExpressionTypes(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Id")   val id: Int = 0,
-    @ColumnInfo(name = "Type") val type: Int
+    @ColumnInfo(name = "Type") val type: String
 )
 
 //----------------------------------------------------------------------------

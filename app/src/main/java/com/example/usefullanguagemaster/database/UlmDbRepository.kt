@@ -87,6 +87,9 @@ class UlmDbRepository private constructor(context: Context) {
     }
     //-----------------------------------------------------------------------
 
+    //----------------------------Get default data (until it is static)-------------------------
+    //fun getExpTypes(): List<String> = expTypes
+    //-----------------------------------------------------------------------
 
     fun getAllLanguagesLearning(): Flow<List<LanguagesLearning>> = database.ulmDao().getAllLanguagesLearning()
 
@@ -130,4 +133,8 @@ class UlmDbRepository private constructor(context: Context) {
             ))
         }
     }
+
+    suspend fun getPOS() = database.ulmDao().getPOS()
+
+    suspend fun getExpTypes() = database.ulmDao().getExpTypes()
 }

@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.usefullanguagemaster.database.ExpressionSetsTextData
+import com.example.usefullanguagemaster.database.ExpressionTypes
 import com.example.usefullanguagemaster.database.LanguagesLearning
+import com.example.usefullanguagemaster.database.PartsOfSpeech
 import com.example.usefullanguagemaster.database.UlmDbRepository
 import com.example.usefullanguagemaster.enums.DataAvailability
 import com.example.usefullanguagemaster.enums.LanguagesLearningEnum
@@ -34,7 +36,7 @@ class ViewModelGeneral : ViewModel() {
         }
     }
 
-    suspend fun getAllExpressionSetsOnce(){
+    suspend fun getAllExpressionSetsOnce() {
         _allExpressionSets.value = repository.getAllExpSetsTextOnce()
     }
 
@@ -54,4 +56,24 @@ class ViewModelGeneral : ViewModel() {
 
     /* The id of active expressionSetId */
     var activeExpressionSetId: Int = DataAvailability.NO_DATA.value
+
+    //--------------------------------------------------------------------------------------------------------
+
+    private var expTypes: List<ExpressionTypes>? = null
+
+    suspend fun getExpTypes(): List<ExpressionTypes>? {
+        if (expTypes == null){
+            expTypes = repository.getExpTypes()
+        }
+        return expTypes
+    }
+
+    private var pos: List<PartsOfSpeech>? = null
+
+    suspend fun getPOS(): List<PartsOfSpeech>?{
+        if (pos == null){
+            pos = repository.getPOS()
+        }
+        return pos
+    }
 }

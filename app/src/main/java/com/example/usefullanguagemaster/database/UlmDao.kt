@@ -11,6 +11,12 @@ interface UlmDao {
     @Query("SELECT * FROM languages_learning")
     fun getAllLanguagesLearning(): Flow<List<LanguagesLearning>>
 
+    @Query("SELECT * FROM parts_of_speech")
+    suspend fun getPOS(): List<PartsOfSpeech>
+
+    @Query("SELECT * FROM expression_types")
+    suspend fun getExpTypes(): List<ExpressionTypes>
+
     // ExpressionSets (expression_sets), but with full string information without foreign keys.
     @Query("SELECT es.Id AS 'id', es.Name AS 'name', ll.Language AS 'languageLearning', lt.Language AS 'languageTranslation' " +
             "FROM languages_learning AS ll " +

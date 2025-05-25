@@ -16,10 +16,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.usefullanguagemaster.R
 import com.example.usefullanguagemaster.dataClasses.NewItem
 import com.example.usefullanguagemaster.databinding.FrAddNewDataDetailedBinding
 import com.example.usefullanguagemaster.exceptions.IncorrectDataEntry
+import com.example.usefullanguagemaster.viewModels.ViewModelGeneral
+import kotlinx.coroutines.launch
 
 
 class FrAddNewDataDetailed : Fragment() {
@@ -31,8 +35,8 @@ class FrAddNewDataDetailed : Fragment() {
             }
         }
 
-    private val typeOfElement = listOf("Word", "Short phrases", "Phrases")
-    private val partsOfSpeech = listOf("none", "n", "v", "adj")
+/*    private val typeOfElement = listOf("Word", "Short phrases", "Phrases")
+    private val partsOfSpeech = listOf("none", "n", "v", "adj")*/
     private val tag = "FrAddNewDataDetailedTag"
 
     override fun onCreateView(
@@ -44,11 +48,19 @@ class FrAddNewDataDetailed : Fragment() {
         return binding.root
     }
 
+    // view model with general information
+    private val vmGeneralF: ViewModelGeneral by activityViewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Setting up adapters.
-        setSpinnerAdapters(typeOfElement, partsOfSpeech)
+        viewLifecycleOwner.lifecycleScope.launch {
+            val expTypes = vmGeneralF.getExpTypes()?.map { it.type } ?: listOf()
+            val pos = vmGeneralF.getPOS()?.map { it.shortName } ?: listOf()
+
+            // Setting up adapters.
+            setSpinnerAdapters(expTypes, pos)
+        }
 
         binding.apply {
             bCompleteExit.setOnClickListener {
