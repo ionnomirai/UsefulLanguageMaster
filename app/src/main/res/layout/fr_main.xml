@@ -92,7 +92,6 @@
                 android:layout_height="wrap_content"
                 style="@style/Text_card_vocabulary"
                 android:textAlignment="center"
-                android:background="#50FF0000"
                 app:layout_constraintBottom_toBottomOf="@+id/tvCurVocabulary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvCurVocabulary"

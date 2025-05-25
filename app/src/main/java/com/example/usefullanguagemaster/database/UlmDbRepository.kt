@@ -14,6 +14,24 @@ class UlmDbRepository private constructor(context: Context) {
     private val databaseName = "useful_language_master_database"
     private val tag = "UlmDbRepository_tag"
 
+    private val expTypes = listOf(
+        "Word",
+        "Short phrase",
+        "Full phrase"
+    )
+
+    private val pos = listOf(
+        PartsOfSpeech(language = 1, shortName = "emp.", fullName = "Empty"),
+        PartsOfSpeech(language = 1, shortName = "n.", fullName = "Noun"),
+        PartsOfSpeech(language = 1, shortName = "v.", fullName = "Verb"),
+        PartsOfSpeech(language = 1, shortName = "adj.", fullName = "Adjective"),
+        PartsOfSpeech(language = 1, shortName = "adv.", fullName = "Adverb"),
+        PartsOfSpeech(language = 1, shortName = "pron.", fullName = "Pronoun"),
+        PartsOfSpeech(language = 1, shortName = "prep.", fullName = "Preposition"),
+        PartsOfSpeech(language = 1, shortName = "conj.", fullName = "Conjunction"),
+        PartsOfSpeech(language = 1, shortName = "int.", fullName = "Interjection"),
+    )
+
     private val database: UlmDatabase =
         Room
             .databaseBuilder(
@@ -25,7 +43,15 @@ class UlmDbRepository private constructor(context: Context) {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
                     Log.d(tag, "callback --> OnCreate()")
+
+                    // add data into language_learning table (LanguagesLearning data class)
                     db.execSQL("INSERT INTO languages_learning (Language) VALUES ('English')")
+
+                    // add data into expression_types table (ExpressionTypes data class)
+                    insertExpTypes(db, expTypes)
+
+                    // add data into part of speech table (PartsOfSpeech data class)
+                    insertPOS(db, pos)
                 }
             })
             .build()
@@ -43,6 +69,23 @@ class UlmDbRepository private constructor(context: Context) {
             return INSTANCE ?: throw IllegalStateException("The local useful_language_master_database is not initialized.")
         }
     }
+
+    //----------------------------Raw default insert-------------------------
+    /* default insert data into expression_types table (ExpressionTypes data class) */
+    private fun insertExpTypes(db: SupportSQLiteDatabase, items: List<String>){
+        items.forEach { type ->
+            db.execSQL("INSERT INTO expression_types (Type) VALUES (?)", arrayOf(type))
+        }
+    }
+
+    /* default insert data into part of speech table (PartsOfSpeech data class) */
+    private fun insertPOS(db: SupportSQLiteDatabase, items: List<PartsOfSpeech>){
+        items.forEach {
+            db.execSQL("INSERT INTO parts_of_speech (Language, Short_name, Full_name) VALUES (?, ?, ?)",
+                arrayOf(it.language, it.shortName, it.fullName))
+        }
+    }
+    //-----------------------------------------------------------------------
 
 
     fun getAllLanguagesLearning(): Flow<List<LanguagesLearning>> = database.ulmDao().getAllLanguagesLearning()

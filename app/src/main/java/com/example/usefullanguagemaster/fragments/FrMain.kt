@@ -56,8 +56,26 @@ class FrMain : Fragment() {
                 findNavController().navigate(R.id.action_frMain_to_frVocabularies)
             }
 
+            bTraining.setOnClickListener {
+                if (vmGeneralF.activeExpressionSetId == DataAvailability.NO_DATA.value) {
+                    messageVocDoesntExist()
+                }
+                Log.d(tag, "${vmGeneralF.activeExpressionSetId == DataAvailability.NO_DATA.value} -- ${vmGeneralF.activeExpressionSetId}")
+            }
+
             bAddNewData.setOnClickListener {
-                findNavController().navigate(R.id.action_frMain_to_frAddNewDataDetailed)
+                if (vmGeneralF.activeExpressionSetId == DataAvailability.NO_DATA.value) {
+                    messageVocDoesntExist()
+                } else {
+                    findNavController().navigate(R.id.action_frMain_to_frAddNewDataDetailed)
+                }
+
+            }
+
+            bViewAllData.setOnClickListener {
+                if (vmGeneralF.activeExpressionSetId == DataAvailability.NO_DATA.value) {
+                    messageVocDoesntExist()
+                }
             }
 
             // set data to the cardView about current active Vocabulary
@@ -79,13 +97,15 @@ class FrMain : Fragment() {
                 *
                 * If shared preferences is null - is error, and we should handle it.*/
                 try {
-                    if (activeExpressionSetId == DataAvailability.NO_DATA.value){
+                    if (activeExpressionSetId == DataAvailability.NO_DATA.value) {
                         sharedPreferences?.let {
-                            activeExpressionSetId = it.getInt(getString(R.string.sp_vocabulary_id), 1)
-                        } ?: throw NullPointerException("sharedPreference is null (in setCardCurrentVocabulary function)")
+                            activeExpressionSetId =
+                                it.getInt(getString(R.string.sp_vocabulary_id), DataAvailability.NO_DATA.value)
+                        }
+                            ?: throw NullPointerException("sharedPreference is null (in setCardCurrentVocabulary function)")
                     }
-                } catch (e: NullPointerException){
-                    Toast.makeText(context, "sharedPreference is null", Toast.LENGTH_SHORT ).show()
+                } catch (e: NullPointerException) {
+                    Toast.makeText(context, "sharedPreference is null", Toast.LENGTH_SHORT).show()
                 }
 
                 getAllExpressionSetsOnce() //not observe, only get once 'allExpressionSets'
@@ -96,6 +116,16 @@ class FrMain : Fragment() {
                 }?.name ?: ""
             }
         }
+    }
+
+    /*If no vocabulary is created, the application cannot be used. Ask to create a vocabulary.*/
+    /* create message if dictionary does not exist and tell about it to user. */
+    private fun messageVocDoesntExist() {
+        Toast.makeText(
+            requireContext(),
+            "Please, create a vocabulary first (click on the yellow card above)",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
 

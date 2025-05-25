@@ -7,10 +7,17 @@ import androidx.room.RoomDatabase
     entities = [
         LanguagesLearning::class,
         LanguagesTranslation::class,
-        ExpressionSets::class
+        ExpressionSets::class,
+        ExpressionTypes::class,
+        Expressions::class,
+        MappingExpressionsSets::class,
+        MappingExpressionsTranslations::class,
+        PartsOfSpeech::class,
+        PhrasesAuxiliary::class,
+        Translations::class
     ],
     version = 1
 )
-abstract class UlmDatabase: RoomDatabase() {
+abstract class UlmDatabase : RoomDatabase() {
     abstract fun ulmDao(): UlmDao
 }
