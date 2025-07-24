@@ -76,6 +76,15 @@ class FrMain : Fragment() {
                 if (vmGeneralF.activeExpressionSetId == DataAvailability.NO_DATA.value) {
                     messageVocDoesntExist()
                 }
+
+                // test part
+                viewLifecycleOwner.lifecycleScope.launch {
+                    val expressions = vmGeneralF.getAllExpressions()
+                    expressions.forEach {
+                        Log.d(tag, it.toString())
+                    }
+                }
+
             }
 
             // set data to the cardView about current active Vocabulary

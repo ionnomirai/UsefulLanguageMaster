@@ -114,7 +114,7 @@ data class Expressions(
 )
 
 //----------------------------------------------------------------------------
-/*many to many between expreesions and sets of vocabulary (words and vocabulary)*/
+/*many to many between expressions and sets of vocabulary (words and vocabulary)*/
 @Entity(
     tableName = "mapping_expressions_sets",
     indices = [

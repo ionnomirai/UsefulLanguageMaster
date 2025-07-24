@@ -3,8 +3,10 @@ package com.example.usefullanguagemaster.viewModels
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.usefullanguagemaster.dataClasses.NewItem
 import com.example.usefullanguagemaster.database.ExpressionSetsTextData
 import com.example.usefullanguagemaster.database.ExpressionTypes
+import com.example.usefullanguagemaster.database.Expressions
 import com.example.usefullanguagemaster.database.LanguagesLearning
 import com.example.usefullanguagemaster.database.PartsOfSpeech
 import com.example.usefullanguagemaster.database.UlmDbRepository
@@ -15,6 +17,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+
+/*Need to change:
+* - name allExpressionSets to allExpressionSetsText
+* - name getAllExpressionSetsOnce to getAllExpressionSetsOnceText*/
 class ViewModelGeneral : ViewModel() {
     private val vmGeneralTag = "ViewModelGeneralTag"
 
@@ -75,5 +81,32 @@ class ViewModelGeneral : ViewModel() {
             pos = repository.getPOS()
         }
         return pos
+    }
+
+    suspend fun saveExpressionInDb(item: NewItem){
+
+        val currentSet = allExpressionSets.value.get(activeExpressionSetId-1)
+        val expSet = repository.getExpSet(currentSet.id)
+        val expTypeCur = expTypes?.find { it.type == item.type }
+        val posCur = pos?.find { it.shortName == item.pos }
+
+        try {
+            repository.saveExpression(
+                expression = item,
+                languageLearning = expSet.learningLanguage,
+                languageTranslation = expSet.translationLanguage,
+                expressionType = expTypeCur?.id ?: throw IllegalArgumentException("strange expression type"),
+                pos = posCur?.id ?: throw IllegalArgumentException("strange pos"),
+                setId = currentSet.id
+            )
+        } catch (e: IllegalArgumentException){
+            Log.d(vmGeneralTag, e.message.toString())
+        }
+    }
+
+
+    // ------------------test part below
+    suspend fun getAllExpressions(): List<Expressions>{
+        return repository.getAllExpressionsTest()
     }
 }

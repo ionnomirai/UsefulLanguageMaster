@@ -18,6 +18,7 @@ import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import com.example.usefullanguagemaster.R
 import com.example.usefullanguagemaster.dataClasses.NewItem
 import com.example.usefullanguagemaster.databinding.FrAddNewDataDetailedBinding
@@ -35,8 +36,6 @@ class FrAddNewDataDetailed : Fragment() {
             }
         }
 
-/*    private val typeOfElement = listOf("Word", "Short phrases", "Phrases")
-    private val partsOfSpeech = listOf("none", "n", "v", "adj")*/
     private val tag = "FrAddNewDataDetailedTag"
 
     override fun onCreateView(
@@ -67,6 +66,9 @@ class FrAddNewDataDetailed : Fragment() {
                 val item = getWordInfo(
                     type = spType.selectedItem.toString()
                 )
+                vmGeneralF.viewModelScope.launch {
+                    item?.let { vmGeneralF.saveExpressionInDb(it) }
+                }
                 Log.d(tag, item.toString())
             }
 
@@ -158,7 +160,6 @@ class FrAddNewDataDetailed : Fragment() {
             val viewPhrase = binding.llPhrases.getChildAt(i) // get view by index --> Phrase (et)
             val viewPhraseTranslation =
                 binding.llPhrases.getChildAt(i + 2) // Phrase translation (et)
-
             if ((viewPhrase is EditText) && (viewPhraseTranslation is EditText)) {
                 try {
                     // if the Pair isn't null, add it to list
